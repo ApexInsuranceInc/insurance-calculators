@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Insurance Calculators 2026 | Apex Insurance Tools</title>
+<meta name="description" content="Free interactive insurance calculators for gap insurance, PLPD, commercial trucking, EV insurance, restaurant liability, delivery riders, home and life insurance.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://apexinsuranceinc.com/insurance-calculators/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0b1d35;
+    --navy-mid: #122544;
+    --navy-light: #1a3560;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --teal: #00b4a6;
+    --teal-light: #00d4c4;
+    --white: #f5f7fa;
+    --muted: #8fa3c1;
+    --card: #0f2340;
+    --card-border: rgba(201, 168, 76, 0.18);
+    --radius: 16px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── BACKGROUND ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 10%, rgba(0,180,166,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 80% 80%, rgba(201,168,76,0.06) 0%, transparent 55%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrap { position: relative; z-index: 1; max-width: 960px; margin: 0 auto; padding: 0 20px; }
+
+  /* ── HEADER ── */
+  header {
+    padding: 60px 20px 50px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .badge {
+    display: inline-block;
+    background: rgba(0,180,166,0.12);
+    border: 1px solid rgba(0,180,166,0.35);
+    color: var(--teal-light);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 100px;
+    margin-bottom: 22px;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    font-weight: 900;
+    line-height: 1.15;
+    color: var(--white);
+    margin-bottom: 18px;
+    letter-spacing: -0.5px;
+  }
+
+  h1 span { color: var(--gold); }
+
+  .subtitle {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 560px;
+    margin: 0 auto 38px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ── NAV TABS ── */
+  .nav-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 20px 50px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .tab-btn {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 9px 18px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+
+  .tab-btn:hover, .tab-btn.active {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--navy);
+    font-weight: 600;
+  }
+
+  /* ── CALCULATOR SECTIONS ── */
+  .calc-section {
+    display: none;
+    padding-bottom: 60px;
+    animation: fadeUp 0.35s ease;
+  }
+
+  .calc-section.active { display: block; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+
+  .section-header .icon {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--white);
+  }
+
+  .section-header p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    padding: 32px;
+    margin-bottom: 20px;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  @media (max-width: 600px) { .two-col { grid-template-columns: 1fr; } }
+
+  /* ── FORM ELEMENTS ── */
+  label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  input[type="number"], select {
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 10px;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    padding: 12px 16px;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    appearance: none;
+    -webkit-appearance: none;
+    margin-bottom: 20px;
+  }
+
+  input[type="number"]:focus, select:focus {
+    border-color: var(--teal);
+    background: rgba(0,180,166,0.06);
+  }
+
+  input[type="range"] {
+    width: 100%;
+    accent-color: var(--teal);
+    height: 4px;
+    margin: 8px 0 24px;
+    cursor: pointer;
+  }
+
+  .range-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: -20px;
+    margin-bottom: 20px;
+  }
+
+  /* ── BUTTON ── */
+  .calc-btn {
+    width: 100%;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border: none;
+    border-radius: 12px;
+    color: var(--navy);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 15px;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+    margin-top: 4px;
+  }
+
+  .calc-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(201,168,76,0.3);
+  }
+
+  .calc-btn:active { transform: translateY(0); }
+
+  /* ── RESULT BOX ── */
+  .result-box {
+    display: none;
+    background: linear-gradient(135deg, rgba(0,180,166,0.1), rgba(0,180,166,0.04));
+    border: 1px solid rgba(0,180,166,0.3);
+    border-radius: var(--radius);
+    padding: 28px;
+    margin-top: 24px;
+    text-align: center;
+    animation: fadeUp 0.3s ease;
+  }
+
+  .result-box.show { display: block; }
+
+  .result-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 10px;
+  }
+
+  .result-value {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+
+  .result-note {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .result-breakdown {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 12px;
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .breakdown-item {
+    background: rgba(255,255,255,0.04);
+    border-radius: 10px;
+    padding: 12px;
+  }
+
+  .breakdown-item .val {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--gold);
+  }
+
+  .breakdown-item .lbl {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 3px;
+  }
+
+  /* ── FOOTER / RESOURCE BOX ── */
+  .resource-box {
+    margin: 60px 0 0;
+    background: linear-gradient(135deg, var(--navy-light), var(--card));
+    border: 1px solid var(--card-border);
+    border-top: 3px solid var(--gold);
+    border-radius: var(--radius);
+    padding: 44px 40px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .resource-box::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(201,168,76,0.08), transparent 70%);
+    pointer-events: none;
+  }
+
+  .resource-box .rb-badge {
+    display: inline-block;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 100px;
+    margin-bottom: 18px;
+  }
+
+  .resource-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.3rem, 3vw, 1.9rem);
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--white);
+  }
+
+  .resource-box p {
+    color: var(--muted);
+    font-size: 0.97rem;
+    line-height: 1.7;
+    max-width: 580px;
+    margin: 0 auto 28px;
+  }
+
+  .resource-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    padding: 14px 32px;
+    border-radius: 100px;
+    transition: transform 0.18s, box-shadow 0.18s;
+    letter-spacing: 0.3px;
+  }
+
+  .resource-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(201,168,76,0.35);
+    text-decoration: none;
+  }
+
+  .resource-link svg {
+    width: 16px; height: 16px;
+    flex-shrink: 0;
+  }
+
+  .resource-features {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 26px;
+  }
+
+  .rf-pill {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 100px;
+    padding: 6px 14px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  footer {
+    text-align: center;
+    padding: 30px 20px 40px;
+    color: rgba(143,163,193,0.5);
+    font-size: 12px;
+    position: relative;
+    z-index: 1;
+  }
+
+  footer a { color: var(--gold); text-decoration: none; }
+
+  /* select arrow */
+  .select-wrap { position: relative; }
+  .select-wrap::after {
+    content: '▾';
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-70%);
+    color: var(--muted);
+    pointer-events: none;
+    font-size: 14px;
+  }
+  .select-wrap select { padding-right: 36px; }
+  .select-wrap select option { background: var(--navy-mid); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="badge">✦ Free Tools — No Login Required</div>
+  <h1>Insurance <span>Calculators</span><br>That Actually Work</h1>
+  <p class="subtitle">Eight free, instant calculators covering every major insurance type — from gap coverage to commercial trucking. No sign-up. No ads. Just answers.</p>
+</header>
+
+<!-- NAV TABS -->
+<nav class="nav-tabs" role="tablist" aria-label="Insurance Calculator Tabs">
+  <button class="tab-btn active" onclick="showTab('gap', this)">Gap Insurance</button>
+  <button class="tab-btn" onclick="showTab('plpd', this)">PLPD</button>
+  <button class="tab-btn" onclick="showTab('truck', this)">Commercial Trucking</button>
+  <button class="tab-btn" onclick="showTab('ev', this)">EV Insurance</button>
+  <button class="tab-btn" onclick="showTab('restaurant', this)">Restaurant Liability</button>
+  <button class="tab-btn" onclick="showTab('delivery', this)">Delivery Rider</button>
+  <button class="tab-btn" onclick="showTab('home', this)">Home Insurance</button>
+  <button class="tab-btn" onclick="showTab('life', this)">Life Insurance</button>
+</nav>
+
+<main class="wrap">
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- 1. GAP INSURANCE CALCULATOR -->
+  <!-- ════════════════════════════════════════════ -->
+  <section id="tab-gap" class="calc-section active" aria-label="Gap Insurance Calculator">
+    <div class="section-header">
+      <span class="icon">🚗</span>
+      <h2>Gap Insurance Calculator</h2>
+      <p>Find out how much gap coverage you need between your car's actual cash value and your outstanding loan balance.</p>
+    </div>
+    <div class="card">
+      <div class="two-col">
+        <div>
+          <label for="gap-loan">Outstanding Loan Balance ($)</label>
+          <input type="number" id="gap-loan" placeholder="e.g. 22000" min="0">
+        </div>
+        <div>
+          <label for="gap-acv">Car's Current Market Value ($)</label>
+          <input type="number" id="gap-acv" placeholder="e.g. 17500" min="0">
+        </div>
+      </div>
+      <div class="two-col">
+        <div>
+          <label for="gap-deductible">Comprehensive Deductible ($)</label>
+          <input type="number" id="gap-deductible" placeholder="e.g. 500" min="0">
+        </div>
+        <div>
+          <label>Loan Remaining (months)</label>
+          <input type="number" id="gap-months" placeholder="e.g. 48" min="1" max="96">
+        </div>
+      </div>
+      <button class="calc-btn" onclick="calcGap()">Calculate Gap Coverage Needed →</button>
+      <div class="result-box" id="gap-result">
+        <div class="result-label">Gap Coverage Required</div>
+        <div class="result-value" id="gap-value">—</div>
+        <div class="result-breakdown" id="gap-breakdown"></div>
+        <p class="result-note" id="gap-note" style="margin-top:14px"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- 2. PLPD CALCULATOR -->
+  <!-- ════════════════════════════════════════════ -->
+  <section id="tab-plpd" class="calc-section" aria-label="PLPD Coverage Estimator">
+    <div class="section-header">
+      <span class="icon">🛡️</span>
+      <h2>PLPD Coverage Estimator</h2>
+      <p>Estimate the right Personal Liability & Property Damage limits based on your assets and risk profile.</p>
+    </div>
+    <div class="card">
+      <div class="two-col">
+        <div>
+          <label for="plpd-assets">Total Personal Assets ($)</label>
+          <input type="number" id="plpd-assets" placeholder="e.g. 85000" min="0">
+        </div>
+        <div>
+          <label>Your State</label>
+          <div class="select-wrap">
+            <select id="plpd-state">
+              <option value="min">Minimum-requirement state</option>
+              <option value="mid">Mid-tier state</option>
+              <option value="high">High-liability state (e.g. NY, CA)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="two-col">
+        <div>
+          <label for="plpd-drivers">Drivers in Household</label>
+          <input type="number" id="plpd-drivers" placeholder="e.g. 2" min="1" max="10">
+        </div>
+        <div>
+          <label>Driving Record</label>
+          <div class="select-wrap">
+            <select id="plpd-record">
+              <option value="clean">Clean (no incidents)</option>
+              <option value="minor">Minor incident (1 ticket)</option>
+              <option value="major">Major incident (accident/DUI)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <button class="calc-btn" onclick="calcPLPD()">Calculate Recommended Limits →</button>
+      <div class="result-box" id="plpd-result">
+        <div class="result-label">Recommended Coverage</div>
+        <div class="result-value" id="plpd-value">—</div>
+        <div class="result-breakdown" id="plpd-breakdown"></div>
+        <p class="result-note" id="plpd-note" style="margin-top:14px"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- 3. COMMERCIAL TRUCKING CALCULATOR -->
+  <!-- ════════════════════════════════════════════ -->
+  <section id="tab-truck" class="calc-section" aria-label="Commercial Trucking Insurance Calculator">
+    <div class="section-header">
+      <span class="icon">🚛</span>
+      <h2>Commercial Trucking Cost Calculator</h2>
+      <p>Estimate annual premiums for owner-operators and small fleets based on vehicle type, haul radius, and cargo.</p>
+    </div>
+    <div class="card">
+      <div class="two-col">
+        <div>
+          <label>Truck Type</label>
+          <div class="select-wrap">
+            <select id="truck-type">
+              <option value="semi">Semi / 18-Wheeler</option>
+              <option value="box">Box Truck</option>
+              <option value="flatbed">Flatbed</option>
+              <option value="tanker">Tanker / Hazmat</option>
+              <option value="pickup">Commercial Pickup</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label>Haul Radius</label>
+          <div class="select-wrap">
+            <select id="truck-radius">
+              <option value="local">Local (under 50 miles)</option>
+              <option value="regional">Regional (50–300 miles)</option>
+              <option value="longhaul">Long Haul (300+ miles)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="two-col">
+        <div>
+          <label for="truck-value">Truck Value ($)</label>
+          <input type="number" id="truck-value" placeholder="e.g. 120000" min="0">
+        </div>
+        <div>
+          <label>Cargo Type</label>
+          <div class="select-wrap">
+            <select id="truck-cargo">
+              <option value="general">General Freight</option>
+              <option value="refrigerated">Refrigerated / Perishables</option>
+              <option value="hazmat">Hazardous Materials</option>
+              <option value="auto">Auto Transport</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div>
+        <label for="truck-years">Years of CDL Experience</label>
+        <input type="number" id="truck-years" placeholder="e.g. 5" min="0" max="50">
+      </div>
+      <button class="calc-btn" onclick="calcTruck()">Calculate Annual Premium Estimate →</button>
+      <div class="result-box" id="truck-result">
+        <div class="result-label">Estimated Annual Premium</div>
+        <div class="result-value" id="truck-value-out">—</div>
+        <div class="result-breakdown" id="truck-breakdown"></div>
+        <p class="result-note" id="truck-note" style="margin-top:14px"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- 4. EV INSURANCE CALCULATOR -->
+  <!-- ════════════════════════════════════════════ -->
+  <section id="tab-ev" class="calc-section" aria-label="EV Insurance Calculator">
+    <div class="section-header">
+      <span class="icon">⚡</span>
+      <h2>EV Insurance Calculator</h2>
+      <p>Estimate how much more you'll pay to insure an electric vehicle versus a comparable gasoline car — and what drives the difference.</p>
+    </div>
+    <div class="card">
+      <div class="two-col">
+        <div>
+          <label>EV Brand</label>
+          <div class="select-wrap">
+            <select id="ev-brand">
+              <option value="tesla">Tesla (Model 3 / Y)</option>
+              <option value="rivian">Rivian / Lucid</option>
+              <option value="chevy">Chevy Bolt / Equinox EV</option>
+              <option value="bmw">BMW / Mercedes EV</option>
+              <option value="hyundai">Hyundai / Kia EV</option>
+              <option value="ford">Ford Mustang Mach-E</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label for="ev-value">Vehicle Purchase Price ($)</label>
+          <input type="number" id="ev-value" placeholder="e.g. 52000" min="0">
+        </div>
+      </div>
+      <div class="two-col">
+        <div>
+          <label for="ev-age">Driver Age</label>
+          <input type="number" id="ev-age" placeholder="e.g. 34" min="16" max="90">
+        </div>
+        <div>
+          <label>Coverage Level</label>
+          <div class="select-wrap">
+            <select id="ev-coverage">
+              <option value="full">Full Coverage</option>
+              <option value="liability">Liability Only</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <button class="calc-btn" onclick="calcEV()">Calculate EV Insurance Estimate →</button>
+      <div class="result-box" id="ev-result">
+        <div class="result-label">Estimated Annual EV Premium</div>
+        <div class="result-value" id="ev-value-out">—</div>
+        <div class="result-breakdown" id="ev-breakdown"></div>
+        <p class="result-note" id="ev-note" style="margin-top:14px"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- 5. RESTAURANT LIABILITY CALCULATOR -->
+  <!-- ════════════════════════════════════════════ -->
+  <section id="tab-restaurant" class="calc-section" aria-label="Restaurant Liability Insurance Calculator">
+    <div class="section-header">
+      <span class="icon">🍽️</span>
+      <h2>Restaurant Liability Calculator</h2>
+      <p>Estimate general liability and liquor liability costs for your food service business based on size and type.</p>
+    </div>
+    <div class="card">
+      <div class="two-col">
+        <div>
+          <label>Restaurant Type</label>
+          <div class="select-wrap">
+            <select id="rest-type">
+              <option value="fast">Fast Food / QSR</option>
+              <option value="casual">Casual Dining</option>
+              <option value="fine">Fine Dining</option>
+              <option value="bar">Bar / Nightclub</option>
+              <option value="food-truck">Food Truck</option>
+              <option value="catering">Catering</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label for="rest-revenue">Annual Revenue ($)</label>
+          <input type="number" id="rest-revenue" placeholder="e.g. 350000" min="0">
+        </div>
+      </div>
+      <div class="two-col">
+        <div>
+          <label for="rest-seats">Number of Seats</label>
+          <input type="number" id="rest-seats" placeholder="e.g. 60" min="0">
+        </div>
+        <div>
+          <label>Serves Alcohol?</label>
+          <div class="select-wrap">
+            <select id="rest-alcohol">
+              <option value="no">No</option>
+              <option value="beer-wine">Beer & Wine Only</option>
+              <option value="full">Full Liquor License</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <button class="calc-btn" onclick="calcRestaurant()">Calculate Annual Premium Estimate →</button>
+      <div class="result-box" id="rest-result">
+        <div class="result-label">Estimated Annual Insurance Cost</div>
+        <div class="result-value" id="rest-value-out">—</div>
+        <div class="result-breakdown" id="rest-breakdown"></div>
+        <p class="result-note" id="rest-note" style="margin-top:14px"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- 6. DELIVERY RIDER CALCULATOR -->
+  <!-- ════════════════════════════════════════════ -->
+  <section id="tab-delivery" class="calc-section" aria-label="Delivery Rider Insurance Calculator">
+    <div class="section-header">
+      <span class="icon">🛵</span>
+      <h2>Delivery Rider Insurance Calculator</h2>
+      <p>Estimate the coverage gap your standard policy leaves when working for Uber Eats, DoorDash, Deliveroo or similar platforms.</p>
+    </div>
+    <div class="card">
+      <div class="two-col">
+        <div>
+          <label>Vehicle Type</label>
+          <div class="select-wrap">
+            <select id="del-vehicle">
+              <option value="bicycle">Bicycle / eBike</option>
+              <option value="moped">Moped / Scooter</option>
+              <option value="motorcycle">Motorcycle</option>
+              <option value="car">Car</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label>Platform</label>
+          <div class="select-wrap">
+            <select id="del-platform">
+              <option value="ubereats">Uber Eats</option>
+              <option value="doordash">DoorDash</option>
+              <option value="deliveroo">Deliveroo 🇬🇧</option>
+              <option value="justeat">Just Eat 🇬🇧</option>
+              <option value="other">Other Platform</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="two-col">
+        <div>
+          <label for="del-hours">Hours Delivered Per Week</label>
+          <input type="number" id="del-hours" placeholder="e.g. 25" min="1" max="80">
+        </div>
+        <div>
+          <label for="del-vehicle-val">Vehicle Value ($)</label>
+          <input type="number" id="del-vehicle-val" placeholder="e.g. 8000" min="0">
+        </div>
+      </div>
+      <button class="calc-btn" onclick="calcDelivery()">Calculate Coverage Gap →</button>
+      <div class="result-box" id="del-result">
+        <div class="result-label">Recommended Annual Add-On Coverage</div>
+        <div class="result-value" id="del-value-out">—</div>
+        <div class="result-breakdown" id="del-breakdown"></div>
+        <p class="result-note" id="del-note" style="margin-top:14px"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- 7. HOME INSURANCE CALCULATOR -->
+  <!-- ════════════════════════════════════════════ -->
+  <section id="tab-home" class="calc-section" aria-label="Home Insurance Calculator">
+    <div class="section-header">
+      <span class="icon">🏠</span>
+      <h2>Home Insurance Calculator</h2>
+      <p>Estimate your annual homeowners insurance premium based on rebuild cost, location risk, and coverage selections.</p>
+    </div>
+    <div class="card">
+      <div class="two-col">
+        <div>
+          <label for="home-value">Home Rebuild Cost ($)</label>
+          <input type="number" id="home-value" placeholder="e.g. 280000" min="0">
+        </div>
+        <div>
+          <label for="home-personal">Personal Property Value ($)</label>
+          <input type="number" id="home-personal" placeholder="e.g. 45000" min="0">
+        </div>
+      </div>
+      <div class="two-col">
+        <div>
+          <label>Location Risk</label>
+          <div class="select-wrap">
+            <select id="home-risk">
+              <option value="low">Low (suburban, low crime)</option>
+              <option value="medium">Medium (average area)</option>
+              <option value="high">High (coastal / storm / wildfire zone)</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label for="home-deductible">Deductible ($)</label>
+          <input type="number" id="home-deductible" placeholder="e.g. 1000" min="0">
+        </div>
+      </div>
+      <button class="calc-btn" onclick="calcHome()">Calculate Annual Premium →</button>
+      <div class="result-box" id="home-result">
+        <div class="result-label">Estimated Annual Premium</div>
+        <div class="result-value" id="home-value-out">—</div>
+        <div class="result-breakdown" id="home-breakdown"></div>
+        <p class="result-note" id="home-note" style="margin-top:14px"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- 8. LIFE INSURANCE CALCULATOR -->
+  <!-- ════════════════════════════════════════════ -->
+  <section id="tab-life" class="calc-section" aria-label="Life Insurance Calculator">
+    <div class="section-header">
+      <span class="icon">❤️</span>
+      <h2>Life Insurance Calculator</h2>
+      <p>Calculate how much life insurance coverage your family actually needs using the DIME method.</p>
+    </div>
+    <div class="card">
+      <div class="two-col">
+        <div>
+          <label for="life-income">Annual Income ($)</label>
+          <input type="number" id="life-income" placeholder="e.g. 65000" min="0">
+        </div>
+        <div>
+          <label for="life-years">Years of Income to Replace</label>
+          <input type="number" id="life-years" placeholder="e.g. 20" min="1" max="50">
+        </div>
+      </div>
+      <div class="two-col">
+        <div>
+          <label for="life-debt">Total Debts (mortgage + loans) ($)</label>
+          <input type="number" id="life-debt" placeholder="e.g. 180000" min="0">
+        </div>
+        <div>
+          <label for="life-education">Children's Education Fund ($)</label>
+          <input type="number" id="life-education" placeholder="e.g. 60000" min="0">
+        </div>
+      </div>
+      <div class="two-col">
+        <div>
+          <label for="life-final">Final Expenses ($)</label>
+          <input type="number" id="life-final" placeholder="e.g. 15000" min="0">
+        </div>
+        <div>
+          <label for="life-assets">Existing Assets / Savings ($)</label>
+          <input type="number" id="life-assets" placeholder="e.g. 30000" min="0">
+        </div>
+      </div>
+      <button class="calc-btn" onclick="calcLife()">Calculate Coverage Needed →</button>
+      <div class="result-box" id="life-result">
+        <div class="result-label">Recommended Life Insurance Coverage</div>
+        <div class="result-value" id="life-value-out">—</div>
+        <div class="result-breakdown" id="life-breakdown"></div>
+        <p class="result-note" id="life-note" style="margin-top:14px"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- RESOURCE BOX — NATURAL DOFOLLOW BACKLINK -->
+  <!-- ════════════════════════════════════════════ -->
+  <aside class="resource-box" aria-label="Insurance Education Resource">
+    <div class="rb-badge">✦ Free Insurance Education</div>
+    <h3>Want to Understand What These Numbers Mean?</h3>
+    <p>
+      Every calculator above is built on real insurance data and underwriting principles.
+      For in-depth guides, plain-English policy breakdowns, state-specific rules, and
+      expert claim tips — visit the full insurance education library at Apex Insurance Inc.
+    </p>
+    <a href="https://apexinsuranceinc.com" rel="dofollow" target="_blank" class="resource-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+      </svg>
+      Visit ApexInsuranceInc.com
+    </a>
+    <div class="resource-features">
+      <span class="rf-pill">📋 Gap Insurance Guides</span>
+      <span class="rf-pill">🚛 Trucking Coverage</span>
+      <span class="rf-pill">⚡ EV Insurance</span>
+      <span class="rf-pill">🍽️ Restaurant Liability</span>
+      <span class="rf-pill">🛵 Delivery Rider Policies</span>
+      <span class="rf-pill">🏠 Home & Life Insurance</span>
+    </div>
+  </aside>
+
+</main>
+
+<footer>
+  <p>Free calculators maintained by <a href="https://apexinsuranceinc.com" rel="dofollow">ApexInsuranceInc.com</a> &mdash; Insurance Education Resource &mdash; 2026</p>
+  <p style="margin-top:8px; font-size:11px;">Results are estimates for educational purposes only. Actual premiums vary by insurer, state, and individual risk profile.</p>
+</footer>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- CALCULATOR LOGIC -->
+<!-- ════════════════════════════════════════════ -->
+<script>
+  /* ── TAB SWITCHING ── */
+  function showTab(id, btn) {
+    document.querySelectorAll('.calc-section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    btn.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function fmt(n) {
+    return '$' + Math.round(n).toLocaleString('en-US');
+  }
+
+  function showResult(boxId, value, breakdown, note) {
+    const box = document.getElementById(boxId);
+    box.classList.add('show');
+    if (value !== null) document.getElementById(value[0]).textContent = value[1];
+    if (breakdown) {
+      const el = document.getElementById(breakdown[0]);
+      el.innerHTML = breakdown[1].map(b =>
+        `<div class="breakdown-item"><div class="val">${b.val}</div><div class="lbl">${b.lbl}</div></div>`
+      ).join('');
+    }
+    if (note) document.getElementById(note[0]).textContent = note[1];
+    box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  /* ── 1. GAP INSURANCE ── */
+  function calcGap() {
+    const loan = +document.getElementById('gap-loan').value || 0;
+    const acv  = +document.getElementById('gap-acv').value  || 0;
+    const ded  = +document.getElementById('gap-deductible').value || 0;
+    const mos  = +document.getElementById('gap-months').value || 12;
+    if (!loan || !acv) { alert('Please enter both loan balance and vehicle value.'); return; }
+    const gap = Math.max(0, loan - (acv - ded));
+    const depRate = 0.15;
+    const maxGapNeeded = loan * (1 - Math.pow(1 - depRate/12, mos)) ;
+    const annualPremium = gap > 0 ? Math.min(Math.max(gap * 0.018, 150), 900) : 0;
+    const note = gap > 0
+      ? `You are underwater by ${fmt(gap)}. Gap insurance would cover this shortfall if your car is totaled. Estimated policy cost: ${fmt(annualPremium)}/year.`
+      : `Your vehicle value exceeds your loan balance — you likely do NOT need gap insurance right now. Reassess if values change.`;
+    showResult('gap-result',
+      ['gap-value', gap > 0 ? fmt(gap) : 'No Gap'],
+      ['gap-breakdown', [
+        { val: fmt(loan), lbl: 'Loan Balance' },
+        { val: fmt(acv),  lbl: 'Car Value (ACV)' },
+        { val: fmt(ded),  lbl: 'Deductible' },
+        { val: gap > 0 ? fmt(annualPremium) + '/yr' : '$0', lbl: 'Est. Gap Premium' }
+      ]],
+      ['gap-note', note]
+    );
+  }
+
+  /* ── 2. PLPD ── */
+  function calcPLPD() {
+    const assets  = +document.getElementById('plpd-assets').value || 0;
+    const state   = document.getElementById('plpd-state').value;
+    const drivers = +document.getElementById('plpd-drivers').value || 1;
+    const record  = document.getElementById('plpd-record').value;
+    let biLimit = 50000, pdLimit = 25000;
+    if (assets > 200000) { biLimit = 300000; pdLimit = 100000; }
+    else if (assets > 80000) { biLimit = 100000; pdLimit = 50000; }
+    if (state === 'high') { biLimit *= 1.5; pdLimit *= 1.5; }
+    if (record === 'major') { biLimit *= 1.3; }
+    if (drivers > 2) { biLimit *= 1.1; }
+    const base = (biLimit / 1000) * 4.2 + (pdLimit / 1000) * 2.1;
+    const recordMult = record === 'clean' ? 1 : record === 'minor' ? 1.25 : 1.65;
+    const annualEst = base * recordMult * drivers * 0.9;
+    showResult('plpd-result',
+      ['plpd-value', fmt(biLimit) + '/' + fmt(biLimit * 2)],
+      ['plpd-breakdown', [
+        { val: fmt(biLimit) + ' per person', lbl: 'Bodily Injury Limit' },
+        { val: fmt(pdLimit), lbl: 'Property Damage Limit' },
+        { val: fmt(annualEst) + '/yr', lbl: 'Est. Annual Premium' },
+        { val: fmt(annualEst / 12) + '/mo', lbl: 'Monthly Cost' }
+      ]],
+      ['plpd-note', `Based on ${fmt(assets)} in assets. Your coverage should protect everything you own — we recommend at least matching your net worth in bodily injury limits.`]
+    );
+  }
+
+  /* ── 3. COMMERCIAL TRUCKING ── */
+  function calcTruck() {
+    const type   = document.getElementById('truck-type').value;
+    const radius = document.getElementById('truck-radius').value;
+    const val    = +document.getElementById('truck-value').value || 0;
+    const cargo  = document.getElementById('truck-cargo').value;
+    const yrs    = +document.getElementById('truck-years').value || 0;
+    const typeBase = { semi: 9500, box: 4200, flatbed: 6500, tanker: 14000, pickup: 2800 };
+    const radiusMult = { local: 1, regional: 1.22, longhaul: 1.55 };
+    const cargoMult = { general: 1, refrigerated: 1.15, hazmat: 1.75, auto: 1.3 };
+    const expDisc = yrs >= 10 ? 0.82 : yrs >= 5 ? 0.91 : yrs >= 2 ? 0.97 : 1.12;
+    const physical = val * 0.028;
+    const liability = typeBase[type] * radiusMult[radius] * cargoMult[cargo] * expDisc;
+    const total = liability + physical;
+    const cargo_coverage = val * 0.015;
+    showResult('truck-result',
+      ['truck-value-out', fmt(total) + '/yr'],
+      ['truck-breakdown', [
+        { val: fmt(liability), lbl: 'Liability Premium' },
+        { val: fmt(physical), lbl: 'Physical Damage' },
+        { val: fmt(cargo_coverage), lbl: 'Cargo Coverage Est.' },
+        { val: fmt(total / 12), lbl: 'Monthly Est.' }
+      ]],
+      ['truck-note', `${yrs} years of CDL experience ${yrs >= 5 ? 'qualifies you for experience discounts' : '— more experience = lower rates'}. Long haul and hazmat significantly raise premiums. Cargo insurance shown separately.`]
+    );
+  }
+
+  /* ── 4. EV INSURANCE ── */
+  function calcEV() {
+    const brand    = document.getElementById('ev-brand').value;
+    const val      = +document.getElementById('ev-value').value || 0;
+    const age      = +document.getElementById('ev-age').value || 30;
+    const coverage = document.getElementById('ev-coverage').value;
+    const brandMult = { tesla: 1.35, rivian: 1.42, chevy: 1.05, bmw: 1.38, hyundai: 1.08, ford: 1.15 };
+    const ageMult  = age < 25 ? 1.45 : age < 30 ? 1.12 : age > 70 ? 1.18 : 1.0;
+    const covMult  = coverage === 'full' ? 1 : 0.38;
+    const baseRate = val * 0.032;
+    const ev_surcharge = val * 0.009;
+    const total = baseRate * brandMult[brand] * ageMult * covMult + ev_surcharge;
+    const gasEquiv = total / brandMult[brand] * 0.88;
+    const premium_diff = total - gasEquiv;
+    showResult('ev-result',
+      ['ev-value-out', fmt(total) + '/yr'],
+      ['ev-breakdown', [
+        { val: fmt(total), lbl: 'EV Annual Premium' },
+        { val: fmt(gasEquiv), lbl: 'Gas Car Equivalent' },
+        { val: '+' + fmt(premium_diff), lbl: 'EV Surcharge' },
+        { val: fmt(total / 12), lbl: 'Monthly Cost' }
+      ]],
+      ['ev-note', `EV insurance typically costs 15–40% more than gas cars due to expensive battery replacement costs. Tesla and Rivian carry the highest surcharges. Battery coverage tip: confirm your policy covers full battery pack replacement.`]
+    );
+  }
+
+  /* ── 5. RESTAURANT ── */
+  function calcRestaurant() {
+    const type    = document.getElementById('rest-type').value;
+    const rev     = +document.getElementById('rest-revenue').value || 0;
+    const seats   = +document.getElementById('rest-seats').value || 0;
+    const alcohol = document.getElementById('rest-alcohol').value;
+    const typeBase = { fast: 1800, casual: 2600, fine: 4200, bar: 6500, 'food-truck': 1400, catering: 2000 };
+    const alcAdd   = { no: 0, 'beer-wine': 1200, full: 3400 };
+    const revFactor = rev > 0 ? (rev / 400000) * 0.4 + 0.6 : 1;
+    const seatFactor = seats > 0 ? Math.min(seats / 80, 1.5) * 0.3 + 0.7 : 1;
+    const gl = typeBase[type] * revFactor * seatFactor;
+    const liquor = alcAdd[alcohol];
+    const property = Math.max(seats * 40, 800);
+    const total = gl + liquor + property;
+    showResult('rest-result',
+      ['rest-value-out', fmt(total) + '/yr'],
+      ['rest-breakdown', [
+        { val: fmt(gl), lbl: 'General Liability' },
+        { val: liquor > 0 ? fmt(liquor) : 'N/A', lbl: 'Liquor Liability' },
+        { val: fmt(property), lbl: 'Property Coverage' },
+        { val: fmt(total / 12), lbl: 'Monthly Est.' }
+      ]],
+      ['rest-note', `Liquor liability is the biggest cost driver for bars and restaurants. Foodborne illness claims average $75K — ensure your GL policy covers product liability. Food trucks typically pay 30% less than brick-and-mortar.`]
+    );
+  }
+
+  /* ── 6. DELIVERY RIDER ── */
+  function calcDelivery() {
+    const vehicle  = document.getElementById('del-vehicle').value;
+    const platform = document.getElementById('del-platform').value;
+    const hours    = +document.getElementById('del-hours').value || 0;
+    const vval     = +document.getElementById('del-vehicle-val').value || 0;
+    const vBase = { bicycle: 280, moped: 520, motorcycle: 850, car: 1400 };
+    const pMult = { ubereats: 1.05, doordash: 1.05, deliveroo: 0.95, justeat: 0.92, other: 1.0 };
+    const hourMult = hours > 40 ? 1.5 : hours > 20 ? 1.2 : 1.0;
+    const gap_coverage = vval * 0.022;
+    const total = vBase[vehicle] * pMult[platform] * hourMult + gap_coverage;
+    const weekly = total / 52;
+    showResult('del-result',
+      ['del-value-out', fmt(total) + '/yr'],
+      ['del-breakdown', [
+        { val: fmt(vBase[vehicle] * pMult[platform] * hourMult), lbl: 'Hire & Reward Policy' },
+        { val: fmt(gap_coverage), lbl: 'Coverage Gap Add-On' },
+        { val: fmt(weekly) + '/wk', lbl: 'Weekly Cost' },
+        { val: fmt(total / 12), lbl: 'Monthly Cost' }
+      ]],
+      ['del-note', `Your standard personal policy does NOT cover you during active deliveries. You need a "hire and reward" add-on or commercial rider policy. At ${hours} hours/week, this is classified as ${hours > 30 ? 'full-time commercial use — critical to cover.' : 'part-time commercial use — still requires proper coverage.'}`]
+    );
+  }
+
+  /* ── 7. HOME INSURANCE ── */
+  function calcHome() {
+    const val  = +document.getElementById('home-value').value || 0;
+    const pers = +document.getElementById('home-personal').value || 0;
+    const risk = document.getElementById('home-risk').value;
+    const ded  = +document.getElementById('home-deductible').value || 1000;
+    const riskMult = { low: 0.0055, medium: 0.0082, high: 0.013 };
+    const dedDisc  = ded >= 2500 ? 0.88 : ded >= 1500 ? 0.94 : 1.0;
+    const dwelling = val * riskMult[risk] * dedDisc;
+    const personal_prop = pers * 0.012;
+    const liability = 280;
+    const total = dwelling + personal_prop + liability;
+    showResult('home-result',
+      ['home-value-out', fmt(total) + '/yr'],
+      ['home-breakdown', [
+        { val: fmt(dwelling), lbl: 'Dwelling Coverage' },
+        { val: fmt(personal_prop), lbl: 'Personal Property' },
+        { val: fmt(liability), lbl: 'Liability' },
+        { val: fmt(total / 12), lbl: 'Monthly Est.' }
+      ]],
+      ['home-note', `Based on ${fmt(val)} rebuild cost. Tip: insure for rebuild cost, not market value. Raising your deductible to $2,500 can cut premiums by 12–15%. High-risk zones (coastal, wildfire) add 35–60% to base rates.`]
+    );
+  }
+
+  /* ── 8. LIFE INSURANCE ── */
+  function calcLife() {
+    const income  = +document.getElementById('life-income').value  || 0;
+    const years   = +document.getElementById('life-years').value   || 10;
+    const debt    = +document.getElementById('life-debt').value    || 0;
+    const edu     = +document.getElementById('life-education').value || 0;
+    const final   = +document.getElementById('life-final').value   || 15000;
+    const assets  = +document.getElementById('life-assets').value  || 0;
+    // DIME method
+    const income_need = income * years;
+    const total_need  = income_need + debt + edu + final;
+    const coverage    = Math.max(0, total_need - assets);
+    const monthly_term = Math.round(coverage / 1000 * 0.42); // rough term rate per $1000
+    showResult('life-result',
+      ['life-value-out', fmt(coverage)],
+      ['life-breakdown', [
+        { val: fmt(income_need), lbl: 'Income Replacement' },
+        { val: fmt(debt), lbl: 'Debt Payoff' },
+        { val: fmt(edu), lbl: 'Education Fund' },
+        { val: fmt(assets), lbl: 'Offset by Assets' }
+      ]],
+      ['life-note', `DIME Method result: ${fmt(coverage)} in coverage. A ${years}-year term policy at this level costs approximately ${fmt(monthly_term * 12)}/year for a healthy adult. Whole life costs 5–15x more but builds cash value. Review your coverage every 3 years or after major life events.`]
+    );
+  }
+</script>
+</body>
+</html>
